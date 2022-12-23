@@ -2,6 +2,7 @@ package br.com.standard.infrastructure.configuration;
 
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Produces;
+import javax.validation.Validator;
 
 import br.com.standard.application.adapter.command.customer.create_customer.CreateCustomerCommandHandler;
 import br.com.standard.application.adapter.command.customer.delete_customer.DeleteCustomerCommandHandler;
@@ -15,13 +16,15 @@ public class ServiceConfiguration {
 
     @Produces
     @RequestScoped
-    public CustomerService getCustomerService(CreateCustomerCommandHandler createCustomerCommandHandler,
+    public CustomerService getCustomerService(Validator validator,
+            CreateCustomerCommandHandler createCustomerCommandHandler,
             UpdateCustomerCommandHandler updateCustomerCommandHandler,
             DeleteCustomerCommandHandler deleteCustomerCommandHandler,
             GetCustomerByIdQueryHandler getCustomerByIdQueryHandler,
             GetCustomersQueryHandler getCustomersQueryHandler) {
 
-        return new CustomerServiceImpl(createCustomerCommandHandler, 
+        return new CustomerServiceImpl(validator,
+            createCustomerCommandHandler, 
             updateCustomerCommandHandler, 
             deleteCustomerCommandHandler, 
             getCustomerByIdQueryHandler, 

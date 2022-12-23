@@ -2,6 +2,9 @@ package br.com.standard.application.adapter.service;
 
 import java.util.List;
 
+import javax.validation.ConstraintViolationException;
+import javax.validation.Validator;
+
 import br.com.standard.application.adapter.command.customer.create_customer.CreateCustomerCommand;
 import br.com.standard.application.adapter.command.customer.create_customer.CreateCustomerCommandHandler;
 import br.com.standard.application.adapter.command.customer.create_customer.CreateCustomerCommandResult;
@@ -19,17 +22,20 @@ import br.com.standard.domain.entity.Customer;
 
 public class CustomerServiceImpl implements CustomerService {
     
+    private final Validator validator;
     private final CreateCustomerCommandHandler createCustomerCommandHandler;
     private final UpdateCustomerCommandHandler updateCustomerCommandHandler;
     private final DeleteCustomerCommandHandler deleteCustomerCommandHandler;
     private final GetCustomerByIdQueryHandler getCustomerByIdQueryHandler;
     private final GetCustomersQueryHandler getCustomersQueryHandler;
 
-    public CustomerServiceImpl(CreateCustomerCommandHandler createCustomerCommandHandler,
+    public CustomerServiceImpl(Validator validator,
+            CreateCustomerCommandHandler createCustomerCommandHandler,
             UpdateCustomerCommandHandler updateCustomerCommandHandler,
             DeleteCustomerCommandHandler deleteCustomerCommandHandler,
             GetCustomerByIdQueryHandler getCustomerByIdQueryHandler,
             GetCustomersQueryHandler getCustomersQueryHandler) {
+        this.validator = validator;
         this.createCustomerCommandHandler = createCustomerCommandHandler;
         this.updateCustomerCommandHandler = updateCustomerCommandHandler;
         this.deleteCustomerCommandHandler = deleteCustomerCommandHandler;
@@ -38,14 +44,17 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     public CreateCustomerCommandResult send(CreateCustomerCommand command) {
+        this.validate(command);
         return this.createCustomerCommandHandler.handle(command);
     }
 
     public UpdateCustomerCommandResult send(UpdateCustomerCommand command) {
+        this.validate(command);
         return this.updateCustomerCommandHandler.handle(command);
     }
 
     public void send(DeleteCustomerCommand command) {
+        this.validate(command);
         this.deleteCustomerCommandHandler.handle(command);
     }
 
@@ -54,6 +63,13 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     public Customer query(GetCustomerByIdQuery query) {
+        this.validate(query);
         return this.getCustomerByIdQueryHandler.handle(query);
+    }
+
+    private <T> void validate(T t) {
+        var validations = validator.validate(t);
+        if (!validations.isEmpty())
+            throw new ConstraintViolationException(validations);
     }
 }
