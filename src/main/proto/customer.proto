@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "br.com.standard";
+option java_outer_classname = "CustomerGrpcProto";
+
+package customer;
+
+service CustomerGrpc {
+    rpc Create(CreateCustomerRequest) returns (CustomerReply) {};
+    rpc Update(UpdateCustomerRequest) returns (CustomerReply) {};
+    rpc GetById(GetCustomerByIdRequest) returns (CustomerReply) {};
+    rpc Get(GetCustomersRequest) returns (GetCustomersReply) {};
+    rpc Delete(DeleteCustomerRequest) returns (DeleteCustomerReply) {};
+}
+
+message CreateCustomerRequest {
+    string name = 1;
+    string email = 2;
+    string phone = 3;
+}
+
+message UpdateCustomerRequest {
+    int64 id = 1;
+    string name = 2;
+    string email = 3;
+    string phone = 4;
+}
+
+message GetCustomerByIdRequest {
+    int64 id = 1;
+}
+
+message GetCustomersRequest {
+
+}
+
+message CustomerReply {
+    int64 id = 1;
+    string name = 2;
+    string email = 3;
+    string phone = 4;
+}
+
+message GetCustomersReply {
+    repeated CustomerReply customers = 1;
+}
+
+message DeleteCustomerRequest {
+    int64 id = 1;
+}
+
+message DeleteCustomerReply {
+    bool success = 1;
+    string message = 2;
+}
