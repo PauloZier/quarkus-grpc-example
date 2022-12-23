@@ -2,7 +2,6 @@ package br.com.standard.application.adapter.service;
 
 import java.util.List;
 
-import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
 
 import br.com.standard.application.adapter.command.customer.create_customer.CreateCustomerCommand;
@@ -20,9 +19,8 @@ import br.com.standard.application.adapter.query.customer.get_customers.GetCusto
 import br.com.standard.application.port.service.CustomerService;
 import br.com.standard.domain.entity.Customer;
 
-public class CustomerServiceImpl implements CustomerService {
+public class CustomerServiceImpl extends ServiceBase implements CustomerService {
     
-    private final Validator validator;
     private final CreateCustomerCommandHandler createCustomerCommandHandler;
     private final UpdateCustomerCommandHandler updateCustomerCommandHandler;
     private final DeleteCustomerCommandHandler deleteCustomerCommandHandler;
@@ -35,7 +33,7 @@ public class CustomerServiceImpl implements CustomerService {
             DeleteCustomerCommandHandler deleteCustomerCommandHandler,
             GetCustomerByIdQueryHandler getCustomerByIdQueryHandler,
             GetCustomersQueryHandler getCustomersQueryHandler) {
-        this.validator = validator;
+        super(validator);
         this.createCustomerCommandHandler = createCustomerCommandHandler;
         this.updateCustomerCommandHandler = updateCustomerCommandHandler;
         this.deleteCustomerCommandHandler = deleteCustomerCommandHandler;
@@ -65,11 +63,5 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer query(GetCustomerByIdQuery query) {
         this.validate(query);
         return this.getCustomerByIdQueryHandler.handle(query);
-    }
-
-    private <T> void validate(T t) {
-        var validations = validator.validate(t);
-        if (!validations.isEmpty())
-            throw new ConstraintViolationException(validations);
     }
 }
