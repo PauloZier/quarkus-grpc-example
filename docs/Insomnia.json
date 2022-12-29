@@ -1,0 +1,177 @@
+{
+    "_type": "export",
+    "__export_format": 4,
+    "__export_date": "2022-12-29T22:13:22.345Z",
+    "__export_source": "insomnia.desktop.app:v2022.7.0",
+    "resources": [
+        {
+            "_id": "greq_38436849b0de4421bfde86dbab407c0c",
+            "parentId": "fld_769d126fc7fc442b933f51569e5a47db",
+            "modified": 1671753844478,
+            "created": 1671569887537,
+            "url": "localhost:9000",
+            "name": "CreateCustomer",
+            "description": "",
+            "protoFileId": "pf_bdf436842a3b4beab724978e3d4ba6d4",
+            "protoMethodName": "/customer.CustomerGrpc/Create",
+            "metadata": [],
+            "body": {
+                "text": "{\n\t\"name\": \"Teste para delete\",\n\t\"email\": \"teste_@gmail.com\",\n\t\"phone\": \"11988880012\"\n}"
+            },
+            "metaSortKey": -1671569887537,
+            "isPrivate": false,
+            "_type": "grpc_request"
+        },
+        {
+            "_id": "fld_769d126fc7fc442b933f51569e5a47db",
+            "parentId": "wrk_c0c7a0f00bb642d0bada93f91ab17242",
+            "modified": 1671753839216,
+            "created": 1671753839216,
+            "name": "GrpcAPI",
+            "description": "",
+            "environment": {},
+            "environmentPropertyOrder": null,
+            "metaSortKey": -1671753839216,
+            "_type": "request_group"
+        },
+        {
+            "_id": "wrk_c0c7a0f00bb642d0bada93f91ab17242",
+            "parentId": null,
+            "modified": 1671554993098,
+            "created": 1671554993098,
+            "name": "New Document",
+            "description": "",
+            "scope": "design",
+            "_type": "workspace"
+        },
+        {
+            "_id": "greq_48ab6e9168f64b04844dbe1ae8f64184",
+            "parentId": "fld_769d126fc7fc442b933f51569e5a47db",
+            "modified": 1671753845941,
+            "created": 1671753163365,
+            "url": "localhost:9000",
+            "name": "UpdateCustomer",
+            "description": "",
+            "protoFileId": "pf_bdf436842a3b4beab724978e3d4ba6d4",
+            "protoMethodName": "/customer.CustomerGrpc/Update",
+            "metadata": [],
+            "body": {
+                "text": "{\n\t\"id\": \"11\",\n\t\"name\": \"Teste Update\",\n\t\"email\": \"teste@gmail.com\",\n\t\"phone\": \"11988880000\"\n}"
+            },
+            "metaSortKey": -1671569887487,
+            "isPrivate": false,
+            "_type": "grpc_request"
+        },
+        {
+            "_id": "greq_2b12f6ab0be944b9aadd16b0ebeda68c",
+            "parentId": "fld_769d126fc7fc442b933f51569e5a47db",
+            "modified": 1671758856015,
+            "created": 1671753756041,
+            "url": "localhost:9000",
+            "name": "DeleteCustomer",
+            "description": "",
+            "protoFileId": "pf_bdf436842a3b4beab724978e3d4ba6d4",
+            "protoMethodName": "/customer.CustomerGrpc/Delete",
+            "metadata": [],
+            "body": {
+                "text": "{\n\t\"id\": null\n}"
+            },
+            "metaSortKey": -1671569887437,
+            "isPrivate": false,
+            "_type": "grpc_request"
+        },
+        {
+            "_id": "greq_a1f4fdc74a6c4199b9cc81141b655230",
+            "parentId": "fld_769d126fc7fc442b933f51569e5a47db",
+            "modified": 1671761632102,
+            "created": 1671753692784,
+            "url": "localhost:9000",
+            "name": "GetCustomers",
+            "description": "",
+            "protoFileId": "pf_bdf436842a3b4beab724978e3d4ba6d4",
+            "protoMethodName": "/customer.CustomerGrpc/Get",
+            "metadata": [],
+            "body": {
+                "text": "{\n\n}"
+            },
+            "metaSortKey": -1671569887387,
+            "isPrivate": false,
+            "_type": "grpc_request"
+        },
+        {
+            "_id": "greq_b0c4ca603f5e4272b5a6bad76b2d490c",
+            "parentId": "fld_769d126fc7fc442b933f51569e5a47db",
+            "modified": 1671762610247,
+            "created": 1671753716359,
+            "url": "localhost:9000",
+            "name": "GetCustomerById",
+            "description": "",
+            "protoFileId": "pf_bdf436842a3b4beab724978e3d4ba6d4",
+            "protoMethodName": "/customer.CustomerGrpc/GetById",
+            "metadata": [],
+            "body": {
+                "text": "{\n \t\"id\": \"9\"\n}"
+            },
+            "metaSortKey": -1671569887337,
+            "isPrivate": false,
+            "_type": "grpc_request"
+        },
+        {
+            "_id": "env_b51fc504d94f2dc387b78b5ff5eb600f90bac025",
+            "parentId": "wrk_c0c7a0f00bb642d0bada93f91ab17242",
+            "modified": 1671554993102,
+            "created": 1671554993102,
+            "name": "Base Environment",
+            "data": {},
+            "dataPropertyOrder": null,
+            "color": null,
+            "isPrivate": false,
+            "metaSortKey": 1671554993102,
+            "_type": "environment"
+        },
+        {
+            "_id": "jar_b51fc504d94f2dc387b78b5ff5eb600f90bac025",
+            "parentId": "wrk_c0c7a0f00bb642d0bada93f91ab17242",
+            "modified": 1671554993103,
+            "created": 1671554993103,
+            "name": "Default Jar",
+            "cookies": [],
+            "_type": "cookie_jar"
+        },
+        {
+            "_id": "spc_bad1fde891f44396a6026af8add7c21e",
+            "parentId": "wrk_c0c7a0f00bb642d0bada93f91ab17242",
+            "modified": 1672347411683,
+            "created": 1671554993098,
+            "fileName": "New Document",
+            "contents": "",
+            "contentType": "yaml",
+            "_type": "api_spec"
+        },
+        {
+            "_id": "uts_2bac6493e8ad47e1af37a3f079d906b6",
+            "parentId": "wrk_c0c7a0f00bb642d0bada93f91ab17242",
+            "modified": 1671554993108,
+            "created": 1671554993108,
+            "name": "Example Test Suite",
+            "_type": "unit_test_suite"
+        },
+        {
+            "_id": "pd_f45e0fa150594d3f8e4db8a0c90f9393",
+            "parentId": "wrk_c0c7a0f00bb642d0bada93f91ab17242",
+            "modified": 1671753106064,
+            "created": 1671753106064,
+            "name": "proto",
+            "_type": "proto_directory"
+        },
+        {
+            "_id": "pf_bdf436842a3b4beab724978e3d4ba6d4",
+            "parentId": "pd_f45e0fa150594d3f8e4db8a0c90f9393",
+            "modified": 1671753106058,
+            "created": 1671753106058,
+            "name": "customer.proto",
+            "protoText": "syntax = \"proto3\";\n\noption java_multiple_files = true;\noption java_package = \"br.com.standard\";\noption java_outer_classname = \"CustomerGrpcProto\";\n\npackage customer;\n\nservice CustomerGrpc {\n    rpc Create(CreateCustomerRequest) returns (CustomerReply) {};\n    rpc Update(UpdateCustomerRequest) returns (CustomerReply) {};\n    rpc GetById(GetCustomerByIdRequest) returns (CustomerReply) {};\n    rpc Get(GetCustomersRequest) returns (GetCustomersReply) {};\n    rpc Delete(DeleteCustomerRequest) returns (DeleteCustomerReply) {};\n}\n\nmessage CreateCustomerRequest {\n    string name = 1;\n    string email = 2;\n    string phone = 3;\n}\n\nmessage UpdateCustomerRequest {\n    int64 id = 1;\n    string name = 2;\n    string email = 3;\n    string phone = 4;\n}\n\nmessage GetCustomerByIdRequest {\n    int64 id = 1;\n}\n\nmessage GetCustomersRequest {\n\n}\n\nmessage CustomerReply {\n    int64 id = 1;\n    string name = 2;\n    string email = 3;\n    string phone = 4;\n}\n\nmessage GetCustomersReply {\n    repeated CustomerReply customers = 1;\n}\n\nmessage DeleteCustomerRequest {\n    int64 id = 1;\n}\n\nmessage DeleteCustomerReply {\n    bool success = 1;\n    string message = 2;\n}",
+            "_type": "proto_file"
+        }
+    ]
+}
